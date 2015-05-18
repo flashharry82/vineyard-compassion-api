@@ -4,7 +4,7 @@ include 'models/person.php';
 $person = Person::find(null);
 
 if(!$person->id){
-  $new_person = new Person('Joe', 'Bloggs', null);
+  $new_person = new Person('Joe', 'Bloggs');
   if ($new_person->save()){
     $person = $new_person;
   }
