@@ -1,10 +1,21 @@
 <?php
 include 'models/person.php';
 
-$person1 = Person::find(1);
+$person = Person::find(null);
+
+if(!$person->id){
+  $new_person = new Person('Joe', 'Bloggs', null);
+  if ($new_person->save()){
+    $person = $new_person;
+  }
+  else{
+    echo 'Error saving person';
+  }
+}
+
 echo 'Hello ';
-echo $person1->displayName();
+echo $person->displayName();
 echo "<br />";
-echo $person1->json();
+echo $person->json();
 
 ?>
