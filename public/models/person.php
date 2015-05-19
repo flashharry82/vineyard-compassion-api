@@ -19,20 +19,5 @@ class Person extends Object
   public function displayName() {
     echo $this->first_name.' '.$this->last_name;
   }
-
-  
-
-  function save(){
-    require_once 'assets/config.php';
-
-    $link = Db::open();
-    $query = $link -> prepare("INSERT INTO people (first_name, last_name, dob) VALUES (?,?,?)");
-    $query -> bind_param('sss', $this->first_name, $this->last_name, $this->dob);
-    $success = $query -> execute();
-    $this->id = $query->insert_id;
-    $query -> close();
-
-    return $success;
-  }
 }
 ?>

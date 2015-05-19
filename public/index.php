@@ -1,7 +1,7 @@
 <?php
 include 'models/person.php';
 
-$person = Person::find(null);
+$person = Person::find();
 
 if(!$person->id){
   $new_person = new Person('Joe', 'Bloggs');
@@ -9,7 +9,7 @@ if(!$person->id){
     $person = $new_person;
   }
   else{
-    echo 'Error saving person';
+    echo '<br />Error saving person';
   }
 }
 
