@@ -1,5 +1,4 @@
 <?php
-include 'models/person.php';
 
 $person = Person::find();
 
