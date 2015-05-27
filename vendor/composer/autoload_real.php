@@ -11,6 +11,27 @@ class ComposerAutoloaderInite628e2549f16982c625ccb6e6ed598b5
         if ('Composer\Autoload\ClassLoader' === $class) {
             require __DIR__ . '/ClassLoader.php';
         }
+
+        $directoryLevel = substr_count($_SERVER['PHP_SELF'], '/') - 1;
+
+        if($class== 'Db'){
+            $classLocation = 'functions/'.strtolower($class).'.php';
+        } else {
+            $classLocation = 'models/'.strtolower($class).'.php';
+        }
+        
+
+        while($directoryLevel > 0) {
+            $classLocation = '../' . $classLocation;
+            $directoryLevel--;
+        }
+
+        if ( ! file_exists($classLocation))
+        {
+            return FALSE;
+        }
+
+        require $classLocation;
     }
 
     public static function getLoader()
