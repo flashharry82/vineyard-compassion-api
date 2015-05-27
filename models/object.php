@@ -22,7 +22,6 @@ class Object{
   }
 
   public static function find($id=null){
-    require_once 'functions/Db.php';
 
     $object = new static();
 
