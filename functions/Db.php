@@ -12,14 +12,15 @@
 //        }
 
 		public static function open() {
+            error_log(getenv("CLEARDB_DATABASE_URL"));
+            $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-            $server = SQLSERVER_NAME;
-            $username = SQLSERVER_USERNAME;
-            $password = SQLSERVER_PASSWORD;
-            $defaultSchema = SQLSERVER_DATABASE_NAME;
+            $server = $url["host"];
+            $username = $url["user"];
+            $password = $url["pass"];
+            $db = substr($url["path"], 1);
 
-
-			$link = new mysqli($server, $username, $password, $defaultSchema);
+            $link = new mysqli($server, $username, $password, $db);
 
 			if($link -> errno) {
 				die('Connection to database failed (' . $link -> errno . ') - ' . $link -> error);

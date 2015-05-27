@@ -22,7 +22,7 @@ class Object{
   }
 
   public static function find($id=null){
-    require_once "functions/Db.php";
+    require_once 'assets/config.php';
 
     $object = new static();
 
