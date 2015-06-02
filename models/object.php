@@ -48,7 +48,6 @@ class Object{
   }
 
   function save(){
-    require_once 'assets/config.php';
 
     $link = Db::open();
 
