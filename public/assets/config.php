@@ -1,8 +1,8 @@
 <?php
 
-    define('SQLSERVER_NAME', '127.0.0.1');
+    define('SQLSERVER_NAME', 'localhost');
     define('SQLSERVER_USERNAME', 'root');
-    define('SQLSERVER_PASSWORD', '');
+    define('SQLSERVER_PASSWORD', 'root');
     define('SQLSERVER_DATABASE_NAME', 'vineyardCompassion');
 
     function my_autoloader($class_name) {
