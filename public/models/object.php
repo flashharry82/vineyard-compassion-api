@@ -44,7 +44,31 @@ class Object{
 
     $query -> close();
 
-    return $object;
+    return json_encode($object);
+  }
+
+  public static function all(){
+
+    $collection = array();
+
+    $link = Db::open();
+    $query = $link -> prepare("SELECT ".implode(", ", static::class_properties())." FROM ".static::$db_table_name);
+
+    $query -> execute();
+    $result = $query->get_result();
+
+    while ($row = $result->fetch_array()){
+      $object = new static();
+      foreach(static::class_properties() as $property){
+        $object->$property = $row[$property];
+      }
+
+      $collection[] = $object;
+    }
+
+    $query -> close();
+
+    return json_encode($collection);
   }
 
   function save(){

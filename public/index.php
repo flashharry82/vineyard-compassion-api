@@ -1,9 +1,19 @@
-<?php
-include 'controllers/people.php';
+<h1>Need authentication</h1>
+<br />
+People Feed -> /people.php
 
-echo 'Hello ';
-echo $person->displayName();
-echo "<br />";
-echo $person->json();
+<?php
+
+$person = Person::find();
+
+if(!isset($person)){
+  $new_person = new Person('Joe', 'Bloggs');
+  if ($new_person->save()){
+    $person = $new_person;
+  }
+  else{
+    echo '<br />Error saving person';
+  }
+}
 
 ?>
