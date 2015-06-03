@@ -1,2 +1,6 @@
 php_value  auto_prepend_file    "./assets/config.php"
 SetEnv  CLEARDB_DATABASE_URL "mysql://root:@127.0.0.1/vineyardcompassion?reconnect=true"
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
