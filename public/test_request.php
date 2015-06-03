@@ -9,7 +9,7 @@ $data = "";
 $signature = urlencode(base64_encode(hash_hmac("sha256", $data, $private_key, TRUE)));
 
 //$url = 'http://localhost:8888/person.php?id=40';
-$url = 'http://localhost:8888/people.php';
+$url = 'http://localhost:8888/people/39';
 $signed_request = array('data'=>$data, 'signature'=>$signature, 'public_key'=>$public_key);
 
 // use key 'http' even if you send the request to https://...

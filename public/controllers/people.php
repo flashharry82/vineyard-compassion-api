@@ -1,17 +1,5 @@
 <?php
 
-if(authenticate()){
-  $page = str_replace('.php','',str_replace('/','',$_SERVER["PHP_SELF"]));
-  switch ($page){
-    case 'people': people(); break;
-    case 'person': person($_GET['id']); break;
-  }
-}
-else{
-  echo "No valid signature";
-}
-
-
 function authenticate(){
 
   if(isset($_POST['signature']) && isset($_POST['public_key'])){
@@ -39,6 +27,7 @@ function authenticate(){
 
 function people(){
   echo Person::all();
+  #include 'views/people/index.php';
 }
 
 function person($id){
